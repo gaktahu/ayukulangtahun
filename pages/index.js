@@ -4,48 +4,19 @@ import nabeel from '../assets/nabeel.jpeg'
 import ayuk from '../assets/ayuk.jpeg'
 import ayuk1 from '../assets/ayuk1.jpeg'
 import mama from '../assets/mama.jpeg'
-import Confetti from 'react-confetti'
 import {Howl, Howler} from 'howler';
 import { useEffect } from 'react';
 import React from "react";
-function useWindowSize() {
-  const isSSR = typeof window == "undefined";
-  const [windowSize, setWindowSize] = React.useState({
-    width: isSSR ? 1200 : window.innerWidth,
-    height: isSSR ? 800 : window.innerHeight,
-  });
-
-  function changeWindowSize() {
-    setWindowSize({ width: window.innerWidth, height: window.innerHeight });
-  }
-
-  React.useEffect(() => {
-    window.addEventListener("resize", changeWindowSize);
-
-    return () => {
-      window.removeEventListener("resize", changeWindowSize);
-    };
-  }, []);
-
-  return windowSize;
-}
 
 var sound = new Howl({
   src: ['hbd.mp3'],
   loop: true
 });
+sound.play();
 
 export default function Home() {
-  const { width, height } = useWindowSize();
-  useEffect(()=>{
-    sound.play();
-  })
   return (
     <>
-    <Confetti
-       width={width}
-       height={height+1000}
-     />
     <section className="h-auto bg-white">
         <div className="px-10 py-24 mx-auto max-w-7xl">
             <div className="w-full mx-auto text-left md:text-center">
